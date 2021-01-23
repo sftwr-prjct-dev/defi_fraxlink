@@ -1,0 +1,109 @@
+import { Dispatch, Fragment, SetStateAction, useState } from 'react'
+import Chartist from 'react-chartist';
+
+
+const data = {
+  labels: ['January 2020'],
+  series: [
+    [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+  ]
+};
+
+const options = {
+  high: 10,
+  low: -10,
+  axisX: {
+    labelInterpolationFnc: function(value, index) {
+      return index % 2 === 0 ? value : null;
+    }
+  }
+};
+
+const period = ['All Time', '1 Year', '6 months', '3 months', '1 Month', '1 Week', '1 Day', '8 Hours', '1 Hour', '15 Minutes']
+
+const list = {
+  'frax-period' : [...period],
+  'frax-category': ['Price', 'Supply', 'Market Cap'],
+  'ratio-period': [...period],
+  'ratio-category': ['Ratio', 'Total Value'],
+  'fxs-period': [...period],
+  'fxs-category': ['Price', 'Circulation Supply', 'Circ. Market Cap', 'Supply', 'Market Cap', 'FXS Burned'],
+  'total-value': ['Total Value', '% Algorithmic']
+}
+
+const Table = ({ table, selected, setSelected }) => {
+  const [openDropdown, setOpendropdown] = useState(false)
+  const [selectedItem, setSelectedItem] = useState({
+    'frax-period': list['frax-period'][0],
+    'frax-category': list['frax-category'][0],
+    'ratio-period': list['ratio-period'][0],
+    'ratio-category': list['ratio-category'][0],
+    'fxs-period': list['fxs-period'][0],
+    'fxs-category': list['fxs-category'][0],
+    'total-value': list['total-value'][0]
+  })
+
+  const showOptions = (id: string) => {
+    setSelected(id)
+    setOpendropdown(!openDropdown)
+  }
+
+  const changeSelectedItem = (newSelection: string) => {
+    setSelectedItem(prev => {
+      return { ...prev, [selected]: newSelection }
+    })
+  }
+
+  return(
+    <div className="w-full md:w-1/2 border-2 border-gray-700">
+      <div className="md:flex">
+        { table.label && <p className="text-center md:p-3 text-white font-sans font-semibold md:text-3xl bg-black">{table.label}</p> }
+        <div className="w-full">
+          <div className="flex py-1 border-2 border-gray-700">
+            {
+              table.header.map(item => {
+                return (
+                  <div key={item.text} className="flex-1 text-center">
+                    <p className="text-sm font-semibold py-1">{ item.text } </p>
+                    <p className="text-sm font-semibold py-1">{ item.value } </p>
+                  </div>
+              )})
+            }
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-end">
+        {
+          table.dropdown.map(item => {
+            return(
+              <div onClick={() => showOptions(item.id)} className="w-1/4 relative mr-5" key={item.id}>
+                <div className="mr-3 border-2 my-2 rounded">
+                  <div className="flex justify-between px-2">
+                    <p className="text-xs font-semibold">{selectedItem[item.id]}</p>
+                    <div>
+                      <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
+                    </div>
+                  </div>
+                </div>
+                {
+                  (openDropdown && selected === item.id) && <div className="border-2 absolute w-11/12 border-gray-600 rounded-sm right-6">
+                    {
+                      list[selected].map(p => {
+                        return <p onClick={() => {changeSelectedItem(p)}} key={p} className="text-xs font-semibold py-2 px-1 hover:bg-gray-600 hover:text-white">{p}</p>
+                      })
+                    }
+                  </div>
+                }
+              </div>
+            )
+          })
+        }
+      </div>
+      <div className={table.id === 1 || table.id === 2 ? "h-52" : "min-h-full"}>
+        <Chartist data={data} options={options} type={table.id = 4 ? 'Pie': 'Bar'} />
+      </div>
+    </div>
+  )
+}
+
+export default Table
