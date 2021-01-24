@@ -18,6 +18,29 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.dash-header-top {
+  color: #67A9FF;
+  background-color: #252C33;
+  border: 1px #3C3F43;
+}
+
+.dash-header-top a:hover {
+  color: #0C498A;
+}
+
+.chart {
+  background-color: #252525;
+}
+
+.dash-header-bottom {
+  background-color: #252525;
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */

@@ -1,23 +1,7 @@
 import { Dispatch, Fragment, SetStateAction, useState } from 'react'
-import Chartist from 'react-chartist';
+import Chart from './Chart';
+import { TableDropdown, TableHeader } from './typeDefs'
 
-
-const data = {
-  labels: ['January 2020'],
-  series: [
-    [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
-  ]
-};
-
-const options = {
-  high: 10,
-  low: -10,
-  axisX: {
-    labelInterpolationFnc: function(value, index) {
-      return index % 2 === 0 ? value : null;
-    }
-  }
-};
 
 const period = ['All Time', '1 Year', '6 months', '3 months', '1 Month', '1 Week', '1 Day', '8 Hours', '1 Hour', '15 Minutes']
 
@@ -57,38 +41,38 @@ const Table = ({ table, selected, setSelected }) => {
   return(
     <div className="w-full md:w-1/2 border-2 border-gray-700">
       <div className="md:flex">
-        { table.label && <p className="text-center md:p-3 text-white font-sans font-semibold md:text-3xl bg-black">{table.label}</p> }
+        { table.label && <p className="text-center md:p-2 text-white font-sans font-semibold md:text-3xl bg-black">{table.label}</p> }
         <div className="w-full">
-          <div className="flex py-1 border-2 border-gray-700">
+          <div className="flex">
             {
-              table.header.map(item => {
+              table.header.map((item: TableHeader) => {
                 return (
                   <div key={item.text} className="flex-1 text-center">
-                    <p className="text-sm font-semibold py-1">{ item.text } </p>
-                    <p className="text-sm font-semibold py-1">{ item.value } </p>
+                    <p className="dash-header-top font-poppins antialiased tracking-tight text-sm font-semibold py-2">{ item.text } </p>
+                    <p className="dash-header-bottom font-poppins antialiased tracking-tight text-sm font-semibold py-1 text-white">{ item.value } </p>
                   </div>
               )})
             }
           </div>
         </div>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-end chart">
         {
-          table.dropdown.map(item => {
+          table.dropdown.map((item: TableDropdown) => {
             return(
               <div onClick={() => showOptions(item.id)} className="w-1/4 relative mr-5" key={item.id}>
-                <div className="mr-3 border-2 my-2 rounded">
+                <div className="mr-3 hover:border-white hover:border-2 my-2 rounded bg-black">
                   <div className="flex justify-between px-2">
-                    <p className="text-xs font-semibold">{selectedItem[item.id]}</p>
+                    <p className="text-xs font-semibold text-white">{selectedItem[item.id]}</p>
                     <div>
-                      <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
+                      <svg stroke="white" fill="#FFF" height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
                     </div>
                   </div>
                 </div>
                 {
                   (openDropdown && selected === item.id) && <div className="border-2 absolute w-11/12 border-gray-600 rounded-sm right-6">
                     {
-                      list[selected].map(p => {
+                      list[selected].map((p: string) => {
                         return <p onClick={() => {changeSelectedItem(p)}} key={p} className="text-xs font-semibold py-2 px-1 hover:bg-gray-600 hover:text-white">{p}</p>
                       })
                     }
@@ -99,8 +83,8 @@ const Table = ({ table, selected, setSelected }) => {
           })
         }
       </div>
-      <div className={table.id === 1 || table.id === 2 ? "h-52" : "min-h-full"}>
-        <Chartist data={data} options={options} type={table.id = 4 ? 'Pie': 'Bar'} />
+      <div className="chart">
+        <Chart tableId={table.id} height={ table.id === 1 || table.id === 2 ? 180 : 275 } width={600}/>
       </div>
     </div>
   )
