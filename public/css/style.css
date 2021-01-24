@@ -5,15 +5,9 @@
 }
 
 /* Custom scrollbar */
-/* width */
 ::-webkit-scrollbar {
 	width: 5px;
 }
-
-/* Track */
-/* ::-webkit-scrollbar-track {
-	background: #f1f1f1;
-} */
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -148,15 +142,6 @@ svg {
 	overflow-y: auto;
 	background-color: rgb(20, 22, 24);
 	border-right: 2px solid rgb(108, 108, 108);
-
-	/* position: relative;
-	overflow: hidden;
-	width: 100%;
-	height: 100vh;
-	background-color: rgb(20, 22, 24);
-	border-top: 1px solid rgb(60, 63, 67);
-	flex: 0 0 170px;
-	flex-direction: column; */
 }
 
 .sidebar__header {
@@ -215,7 +200,6 @@ svg {
 }
 
 /* Icons close to the footer */
-
 .sidebar__brand .brand-icon1 {
 	fill: rgb(255, 255, 255);
 	width: 14px;
@@ -237,7 +221,6 @@ svg {
 .sidebar__brand .brand-link:hover > svg {
 	fill: rgb(0, 123, 255);
 }
-
 /* end Icons close to the footer */
 
 .sidebar-nav__icon {
@@ -264,6 +247,6 @@ svg {
 }
 
 .main {
-	/* border: 2px solid green; */
 	grid-area: main;
+	overflow-y: auto;
 }
