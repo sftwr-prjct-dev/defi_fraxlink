@@ -43,6 +43,13 @@ svg {
 	justify-content: center;
 }
 
+.flex--center-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .flex--9 {
 	flex: 9;
 }
@@ -93,6 +100,37 @@ svg {
 
 .text--gray {
 	color: rgb(232, 232, 232);
+}
+
+/* Custom Radio */
+.radio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+.radio__label {
+	/* position: relative; */
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	/* border: 2px solid red; */
+}
+
+.radio__input {
+	display: none;
+}
+
+.radio__radio {
+	height: 15px;
+	width: 15px;
+	background-color: rgb(60, 63, 67);
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.radio__input:checked + .radio__radio {
+	background-color: rgb(5, 98, 231);
 }
 
 /* Main styles */
