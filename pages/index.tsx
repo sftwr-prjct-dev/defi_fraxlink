@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Socials from '../components/Socials'
 
 const menuItems = [
   {
@@ -20,21 +21,6 @@ const menuItems = [
   {
     link: "/",
     text: "Coverage",
-  },
-]
-
-const socials = [
-  {
-    src: "/git.png",
-    link: "https://github.com",
-  },
-  {
-    src: "/tg.png",
-    link: "/",
-  },
-  {
-    src: "/tw.png",
-    link: "/",
   },
 ]
 
@@ -72,9 +58,7 @@ export default function Home() {
 
       </div>
 
-      <div className="flex justify-end py-5 bottom-0 right-0">
-        {socials.map(({src, link}) => <Social key={src} src={src} link={link} />)}
-      </div>
+      <Socials className="flex justify-end py-5 bottom-0 right-0" />
     </main>
   )
 }
@@ -84,13 +68,5 @@ function MenuItem({text, link}){
     <Link href={link} >
       <a className="text-grayish px-4">{text}</a>
     </Link>
-  )
-}
-
-function Social({src, link}){
-  return (
-    <a href={link} target="_blank" >
-      <img className="h-6 md:h-8 mx-3 rounded-full object-cover" src={src} />
-    </a>
   )
 }
