@@ -1,74 +1,47 @@
-import { Doughnut, Line, defaults } from 'react-chartjs-2'
+import { Doughnut, defaults } from 'react-chartjs-2'
+import LineComponent from './LineComponent'
 
-const Chart = ({ width, height, tableId }) => {
 
+
+
+const Chart = ({ width, height, tableId, data, stepSize }) => {
+ 
   return tableId !== 4 ? (
-    <Line 
-      height={height}
-      width={width}  
-      data={{
-        datasets:[{
-          label: '',
-          data: [10, 20, 30, 40, 50, 60, 70]
-        }]
-      }}
-      options= {{
-        scales: {
-            xAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'month'
-                }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-        },
-        tooltips: {
-          mode: 'nearest'
-        },
-        elements: {
-          line: {
-              tension: 0
-          }
-        },
-        legend: {
-          display: false
-        },
-      }
-    }
-    />
+    <LineComponent width={width} height={height} datasets={data} stepSize={stepSize}/>
   ) : (
     <Doughnut 
       height={height}
       width={width}  
       data={{
-        datasets:[{
-          label: '',
-          data: [10, 20, 30, 40, 50, 60, 70]
-        }]
+        datasets:[
+          {
+            // label: 'Algorithmic',
+            data: data,
+            backgroundColor: [
+              'blue',
+              'orange'
+            ],
+          }
+        ],
+        labels: ['Algorithmic', 'USDC']
       }}
-      options= {{
-        scales: {
-            xAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'month'
-                }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-        },
-        tooltips: {
-          mode: 'nearest'
-        },
+      options= {
+        {
+          tooltips: {
+            mode: 'nearest'
+          },
+          layout: {
+            padding: { bottom: 8 }
+          },
+          legend: {
+            labels: {
+              position: 'left',
+              align: 'start',
+              fontColor: '#FFF'
+            }
+          }
+        }
       }
-    }
     />
   )
 }
