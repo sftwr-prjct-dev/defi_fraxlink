@@ -1,14 +1,10 @@
-import Dashboard from '../components/Dashboard'
+import Dashboard from "../components/Dashboard";
+import Layout from "../components/Layout";
 
-const dashboard = () => {
-  return(
-    <div className="flex">
-      <div className="w-1/12"></div>
-      <div className="w-11/12">
-        <Dashboard />
-      </div>
-    </div>
-  )
+export default function Dash(){
+    return (
+        <Layout>
+            <Dashboard />
+        </Layout>
+    )
 }
-
-export default dashboard
