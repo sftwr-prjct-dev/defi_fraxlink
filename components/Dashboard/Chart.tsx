@@ -1,13 +1,43 @@
-import { Doughnut, defaults } from 'react-chartjs-2'
-import LineComponent from './LineComponent'
-
-
-
+import { Doughnut, Line } from 'react-chartjs-2'
 
 const Chart = ({ width, height, tableId, data, stepSize }) => {
  
   return tableId !== 4 ? (
-    <LineComponent width={width} height={height} datasets={data} stepSize={stepSize}/>
+    <Line 
+      height={height}
+      width={width}  
+      data={{
+        datasets: data
+      }}
+      options= {{
+        scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                unit: 'month',
+                stepSize: stepSize
+              },
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+        },
+        tooltips: {
+          mode: 'nearest'
+        },
+        elements: {
+          line: {
+              tension: 0
+          }
+        },
+        legend: {
+          display: false
+        },
+      }
+    }
+    />
   ) : (
     <Doughnut 
       height={height}
