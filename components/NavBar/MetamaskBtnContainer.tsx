@@ -1,6 +1,6 @@
 export const MetamaskBtnContainer = ({children}) => {
     return (
-        <div className="flex flex-wrap items-center justify-center text-white border border-borderCol py-3">
+        <div className="flex flex-wrap items-center justify-center bg-black text-white border border-borderCol md:border-l-0 py-3">
            {children}
         </div>
     )

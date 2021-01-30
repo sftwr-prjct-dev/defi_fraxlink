@@ -15,7 +15,7 @@ const socials = [
 function SocialItem({src, link}){
     return (
       <a href={link} target="_blank" >
-        <img className="h-6 md:h-8 mx-3 rounded-full object-cover hover:opacity-75" src={src} />
+        <img className="h-6 md:h-7 mx-3 rounded-full object-cover hover:opacity-75" src={src} />
       </a>
     )
 }
