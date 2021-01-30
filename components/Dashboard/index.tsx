@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react'
+import { Fragment, useState } from 'react'
 import Table from './Table'
 
 const chart1 = {
@@ -25,7 +25,24 @@ const chart1 = {
     {
       id: 'frax-category'
     }
-  ]
+  ],
+  data: [
+    {
+      fill: false, borderColor: '#FFF',
+      data: [{
+        t: new Date('January 14 2020'),
+        y: 15
+        }, {
+            t: new Date('January 17, 2020'),
+            y: 12
+        },
+        {
+          t: new Date('January 27, 2020'),
+          y: 25
+      }]
+    }
+  ],
+  stepSize: 6
 }
 
 const chart2 = {
@@ -48,7 +65,20 @@ const chart2 = {
     {
       id: 'ratio-category'
     }
-  ]
+  ],
+  data: [
+    {
+      fill: false, borderColor: '#FFF',
+      data: [{
+        t: new Date('January 13 2020'),
+        y: 5
+    }, {
+        t: new Date('January 17, 2020'),
+        y: 10
+    }]
+    }
+  ],
+  stepSize: 4
 }
 
 const chart3 = {
@@ -75,7 +105,20 @@ const chart3 = {
     {
       id: 'fxs-category'
     }
-  ]
+  ],
+  data: [
+    {
+      fill: false, borderColor: '#FFF',
+      data: [{
+        t: new Date('January 14 2020'),
+        y: 20
+    }, {
+        t: new Date('August 17, 2021'),
+        y: 49
+    }]
+    }
+  ],
+  stepSize: 3
 }
 
 const chart4 = {
@@ -91,7 +134,8 @@ const chart4 = {
     {
       id: 'total-value'
     }
-  ]
+  ],
+  data: [10,20]
 }
 
 const Dashboard = () => {
@@ -99,9 +143,9 @@ const Dashboard = () => {
   return (
     <Fragment>
       <div className="md:flex md:flex-wrap">
-        <Table table={chart1} selected={selected} setSelected={setSelected} />
-        <Table table={chart2} selected={selected} setSelected={setSelected} />
-        <Table table={chart3} selected={selected} setSelected={setSelected} />
+        <Table table={chart1} selected={selected} setSelected={setSelected}/>
+        <Table table={chart2} selected={selected} setSelected={setSelected}/>
+        <Table table={chart3} selected={selected} setSelected={setSelected}/>
         <Table table={chart4} selected={selected} setSelected={setSelected} />
       </div>
     </Fragment>  

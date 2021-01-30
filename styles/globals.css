@@ -25,7 +25,7 @@ a {
 .dash-header-top {
   color: #67A9FF;
   background-color: #252C33;
-  border: 1px #3C3F43;
+  border: 1px solid #3C3F43;
 }
 
 .dash-header-top a:hover {
@@ -38,6 +38,15 @@ a {
 
 .dash-header-bottom {
   background-color: #252525;
+  border: 1px solid #3C3F43;
+}
+
+.dropdown {
+  background-color: #141618;
+}
+
+.dropdown-menu {
+  max-height: 17rem;
 }
 
 /* Start purging... */

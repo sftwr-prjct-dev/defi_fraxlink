@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import Chart from './Chart';
 import { TableDropdown, TableHeader } from './typeDefs'
 
@@ -16,6 +16,7 @@ const list = {
 }
 
 const Table = ({ table, selected, setSelected }) => {
+
   const [openDropdown, setOpendropdown] = useState(false)
   const [selectedItem, setSelectedItem] = useState({
     'frax-period': list['frax-period'][0],
@@ -41,15 +42,15 @@ const Table = ({ table, selected, setSelected }) => {
   return(
     <div className="w-full md:w-1/2 border-2 border-gray-700">
       <div className="md:flex">
-        { table.label && <p className="text-center md:p-2 text-white font-sans font-semibold md:text-3xl bg-black">{table.label}</p> }
+        { table.label && <p className="text-center md:p-2 text-white font-sans md:text-3xl bg-black">{table.label}</p> }
         <div className="w-full">
           <div className="flex">
             {
               table.header.map((item: TableHeader) => {
                 return (
                   <div key={item.text} className="flex-1 text-center">
-                    <p className="dash-header-top font-poppins antialiased tracking-tight text-sm font-semibold py-2">{ item.text } </p>
-                    <p className="dash-header-bottom font-poppins antialiased tracking-tight text-sm font-semibold py-1 text-white">{ item.value } </p>
+                    <p className="dash-header-top font-poppins antialiased tracking-tight text-sm py-2">{ item.text } </p>
+                    <p className="dash-header-bottom font-poppins antialiased tracking-tight text-sm py-1 text-white border-gray-500">{ item.value } </p>
                   </div>
               )})
             }
@@ -60,31 +61,33 @@ const Table = ({ table, selected, setSelected }) => {
         {
           table.dropdown.map((item: TableDropdown) => {
             return(
-              <div onClick={() => showOptions(item.id)} className="w-1/4 relative mr-5" key={item.id}>
+              <div onClick={() => showOptions(item.id)} className=" w-1/3 md:w-1/4 relative mr-5" key={item.id}>
                 <div className="mr-3 hover:border-white hover:border-2 my-2 rounded bg-black">
-                  <div className="flex justify-between px-2">
-                    <p className="text-xs font-semibold text-white">{selectedItem[item.id]}</p>
-                    <div>
-                      <svg stroke="white" fill="#FFF" height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
+                  <div className="flex justify-between px-2 dropdown rounded hover:shadow-outline">
+                    <p className="text-xs text-white md:py-1">{selectedItem[item.id]}</p>
+                    <div className="md:pt-1">
+                      <svg fill="#FFF" height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
                     </div>
                   </div>
                 </div>
-                {
-                  (openDropdown && selected === item.id) && <div className="border-2 absolute w-11/12 border-gray-600 rounded-sm right-6">
-                    {
-                      list[selected].map((p: string) => {
-                        return <p onClick={() => {changeSelectedItem(p)}} key={p} className="text-xs font-semibold py-2 px-1 hover:bg-gray-600 hover:text-white">{p}</p>
-                      })
-                    }
-                  </div>
-                }
+                <div className="w-11/12 absolute z-10">
+                  {
+                    (openDropdown && selected === item.id) && <div className="overflow-y-auto rounded-sm right-6 bg-black text-white py-1 dropdown-menu">
+                      {
+                        list[selected].map((p: string) => {
+                          return <p onClick={() => {changeSelectedItem(p)}} key={p} className="text-xs py-2 pl-3 hover:bg-blue-700 hover:text-white">{p}</p>
+                        })
+                      }
+                    </div>
+                  }
+                </div>
               </div>
             )
           })
         }
       </div>
       <div className="chart">
-        <Chart tableId={table.id} height={ table.id === 1 || table.id === 2 ? 180 : 275 } width={600}/>
+        <Chart tableId={table.id} height={ table.id === 1 || table.id === 2 ? 180 : 275 } width={600} data={table.data} stepSize={table.stepSize}/>
       </div>
     </div>
   )
