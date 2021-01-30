@@ -10,6 +10,7 @@ module.exports = {
       },
       height: {
         480: '480px',
+        "1/2": '50%',
         "3.5": '3.5rem',
       },
       maxHeight: {
@@ -24,6 +25,7 @@ module.exports = {
       },
       colors: {
         grayish: '#808080',
+        menuBg: '#252525',
         borderCol: 'rgb(60, 63, 67)',
         headBorderCol: 'rgb(108, 108, 108)',
         brownBg: 'rgb(37, 37, 37)',

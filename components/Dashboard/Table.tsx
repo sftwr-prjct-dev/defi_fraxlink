@@ -40,7 +40,7 @@ const Table = ({ table, selected, setSelected }) => {
   }
 
   return(
-    <div className="w-full md:w-1/2 border-2 border-gray-700">
+    <div className="w-full md:w-1/2 md:h-1/2 border-2 border-gray-700">
       <div className="md:flex">
         { table.label && <p className="text-center md:p-2 text-white font-sans md:text-3xl bg-black">{table.label}</p> }
         <div className="w-full">

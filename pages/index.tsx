@@ -3,23 +3,23 @@ import Socials from '../components/Socials'
 
 const menuItems = [
   {
-    link: "/",
+    link: "https://docs.frax.finance/overview",
     text: "Whitepaper",
   },
   {
-    link: "/",
+    link: "https://docs.frax.finance",
     text: "Docs",
   },
   {
-    link: "/",
+    link: "https://github.com/FraxFinance/frax-solidity",
     text: "Github",
   },
   {
-    link: "/",
+    link: "https://certik.foundation/projects/fraxfinance",
     text: "Audit",
   },
   {
-    link: "/",
+    link: "https://app.coverprotocol.com/app/marketplace/protocols/FRAX",
     text: "Coverage",
   },
 ]
@@ -30,14 +30,19 @@ const moreText = "The Frax Protocol introduced the world to the concept of a cry
 
 export default function Home() {
   return (
-    <main className="text-center px-6 lg:px-16 flex flex-col justify-between relative min-h-screen bg-black -z-1">
+    <main className="text-center px-6 lg:px-16 flex flex-col justify-between relative min-h-screen bg-black z-0">
       <video autoPlay muted loop className="h-full w-full object-cover fixed top-0 left-0 -z-1">
         <source src="/bg-vid.mp4" />
+        {/* <source src="/bg-vid-ogg.ogg" /> */}
       </video>
       <div className="md:flex flex-wrap ">
 
         <div className="w-full flex justify-center md:w-16 mt-10 md:mt-8">
-          <img src="/logo.png" alt="/logo.png" className="h-16" />
+          <Link href="/">
+            <a>
+              <img src="/logo.png" alt="/logo.png" className="h-16" />
+            </a>
+          </Link>
         </div>
 
         <div className="flex flex-wrap font-bold md:text-lg md:w-550 justify-center items-center ml-auto md:mt-8 bg-transparent-bg leading-loose py-4 md:py-0 rounded-md">
@@ -50,10 +55,14 @@ export default function Home() {
           </h1>
 
           <p className="text-white text-lg mt-6 md:text-3xl md:w-600 lg:w-full">{moreText}</p>
+          <Link href="/dashboard">
+            <a>
+              <button className="h-3.5 w-56 border-white outline-none focus:outline-none hover:bg-white hover:text-black border-2 rounded-md text-white h6 mt-8 font-medium">
+                Trading App
+              </button>
+            </a>
+          </Link>
 
-          <button className="h-3.5 w-56 border-white outline-none border-2 rounded-md text-white h6 mt-8 font-medium">
-            Trading App
-          </button>
         </div>
 
       </div>
@@ -65,8 +74,6 @@ export default function Home() {
 
 function MenuItem({text, link}){
   return (
-    <Link href={link} >
-      <a className="text-grayish px-4">{text}</a>
-    </Link>
+    <a href={link} target="_blank" className="text-grayish mx-4 cursor-pointer inline-block border-b-4 border-opacity-0 hover:border-opacity-75 border-grayish">{text}</a>
   )
 }
