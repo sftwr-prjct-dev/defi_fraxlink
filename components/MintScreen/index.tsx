@@ -25,7 +25,6 @@ const chooseMint =({ e, setMintMethod }) => {
 }
 
 const showOptions = (id: string, setOpendropdown: Dispatch<SetStateAction<boolean>>, openDropdown: boolean) => {
-  // setSelected(id)
   setOpendropdown(!openDropdown)
   console.log(id)
 }
@@ -35,7 +34,6 @@ export default function Mint() {
   const [mintMethod, setMintMethod] = useState('normal')
   const [openDropdown, setOpendropdown] = useState(false)
 
-  // console.log(mintMethod)
   return(
       <div className="font-poppins mint-screen text-white">
         <div className="md:flex">
@@ -55,8 +53,8 @@ export default function Mint() {
             }
           </div>
         </div>
-        <div className="md:flex md:justify-between md:item-center md:mb-40">
-          <div className="md:flex-1 mt-10 md:mt-20 px-3">
+        <div className="md:flex md:justify-between md:item-center">
+          <div className="md:flex-1 mt-10 md:mt-16 px-3 md:mb-32">
             <p className="title text-center">MINT METHOD</p>
             <p>Choose normal if you already have USD and FXS. Choose ETH if you want a <a href="https://etherscan.io" target="_blank">utility contract </a> to mint FRAX with ETH via Uniswap.</p>
             <div className="flex justify-center text-sm py-2">
@@ -114,7 +112,7 @@ export default function Mint() {
             </div>
               <div className="text-center">
                 <p className="antialiased tracking-tight text-sm py-2 text-center title">{mintMethod === 'normal' ? 'FXS' : 'DESIRED FRAX' }</p>
-                <input type="number" placeholder="Amount" className="p-1 w-1/6 rounded border-2 border-gray-300 text-xs"/>
+                <input type="number" placeholder="Amount" className="p-1 rounded border-2 border-gray-300 w-auto text-xs"/>
                 <p className="text-xs p-2 mb-2 text-center">{mintMethod === 'normal' ? '0 Available' : '0 ETH Available' }</p>
               </div>
           </div>
@@ -151,7 +149,6 @@ export default function Mint() {
             <p className="text-sm mt-1">Help</p>
             <span className="mr-4">
               <HelpLogo />    
-
             </span>
           </div>
         </div>
