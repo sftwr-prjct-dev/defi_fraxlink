@@ -49,6 +49,14 @@ a {
   max-height: 17rem;
 }
 
+.mint-screen {
+  background-color: #252C33;
+}
+
+.title {
+  color: #67A9FF;
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
