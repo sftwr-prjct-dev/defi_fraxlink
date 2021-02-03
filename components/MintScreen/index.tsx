@@ -37,15 +37,15 @@ export default function Mint() {
   return(
       <div className="font-poppins mint-screen text-white">
         <div className="md:flex">
-          <div>
-            <p className="text-center md:p-2 text-white font-sans md:text-3xl bg-black">MINT FRAX</p>
+          <div className="md:w-1/4">
+            <p className="text-center md:p-3 text-white font-sans md:text-2xl font-bold bg-black">MINT FRAX</p>
           </div>
-          <div className="flex">
+          <div className="flex md:w-3/4">
             {
               header.map(head => {
                 return (
                   <div key={head.name} className="flex-auto text-center">
-                    <p className="dash-header-top font-poppins antialiased tracking-tight text-sm py-2">{head.name}</p>
+                    <p className="dash-header-top font-poppins antialiased tracking-tight text-sm py-1">{head.name}</p>
                     <p className="dash-header-bottom font-poppins antialiased tracking-tight text-sm py-1 text-white border-gray-500">{head.value}</p>
                   </div>
                 )
