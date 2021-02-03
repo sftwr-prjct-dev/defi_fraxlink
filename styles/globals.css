@@ -49,6 +49,17 @@ a {
   max-height: 17rem;
 }
 
+.redeem-bg {
+  background-color: #252C33;
+}
+
+.redeem-ends {
+  background-color: #30353D;
+}
+
+.redeem-border {
+  border: 1px solid #141618;
+}
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
