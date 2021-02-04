@@ -18,7 +18,7 @@ export default function Staking() {
     };
 
     let daysValue = input.days;
-    const rangeStatus = input.status === "locked" ? true : false;
+    const rangeStatus = input.status === "unlocked" ? true : false;
     
     return (
         <Layout>
@@ -77,16 +77,3 @@ export default function Staking() {
         </Layout>
     );
 }
-
-
-let daysValue = 7;
-const onChangeDaysRange = (value) => {
-daysValue = value
-}
-<div>
-<input type="range" onChange={value => onChangeDaysRange(value)} />
-
-<div>
-    <input type="text" name="" id="" value={daysValue} />
-</div>
-</div>
