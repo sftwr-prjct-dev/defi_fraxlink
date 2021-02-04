@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
 import { useState } from 'react';
-import Dashboard from "../components/Dashboard";
 
 export default function Staking() {
     const [input, setInput] = useState({
