@@ -112,12 +112,11 @@ function StakeHeader({ headerText }) {
 
 function Deposit() {
     return (
-        <div className="flex-center-content md:w-4/12 md:border border-grayish">
+        <div className="flex-center-content md:items-start md:w-4/12 md:border border-grayish">
             <div className="w-full bg-brownBg">
                 <div className="flex-center-content bg-black text-center py-1 text-greenish">DEPOSIT</div>
                 <div className="flex-center-content w-full text-sm py-4 broder-2 border-littlebluetxt ">Staking 🧑‍🌾 :<span className="text-littlebluetxt ml-2">0xa2936...92b6</span> </div>
             </div>
-
             <div className="flex-center-content w-full bg-brownBg border-t border-littlebluetxt">
                 <div className="flex-center-content w-full">
                     <div className="w-1/2 flex-center-content bg-balNameColBg items-center text-littlebluetxt">UNLOCKED</div>
@@ -127,7 +126,7 @@ function Deposit() {
                     <div className="w-1/2 text-center">0</div>
                 </div>
             </div>
-            <div className="flex-center-content text-light bg-brownBg pt-4 w-full">
+            <div className="flex-center-content mt-auto text-light bg-brownBg pt-4 w-full">
                     <div className="w-1/2 flex-center-content">
                         <input className="h-8 w-3/4 bg-white text-black" placeholder="Amount" />
                         <div className=" text-sm">0 Available</div>

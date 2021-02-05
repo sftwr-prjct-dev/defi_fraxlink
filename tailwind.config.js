@@ -24,6 +24,9 @@ module.exports = {
         "9": '9rem',
         "16": '16rem',
       },
+      margin:{
+        "9":'9rem'
+      },
       width: {
         300: '300px',
         400: '400px',
@@ -39,6 +42,7 @@ module.exports = {
        }),
       colors: {
         grayish: '#808080',
+        yellowish: 'rgb(237, 214, 0)',
         light: '#f8f9fa',
         bluish: 'rgb(5, 98, 231)',
         green2: 'rgb(0, 173, 136)',
