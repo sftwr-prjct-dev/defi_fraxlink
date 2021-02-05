@@ -60,6 +60,15 @@ a {
 .redeem-border {
   border: 1px solid #141618;
 }
+
+.mint-screen {
+  background-color: #252C33;
+}
+
+.title {
+  color: #67A9FF;
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
