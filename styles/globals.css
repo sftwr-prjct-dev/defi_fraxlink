@@ -69,6 +69,14 @@ a {
   color: #67A9FF;
 }
 
+.flex-center-content {
+  @apply flex flex-wrap justify-center items-center
+}
+
+.black-header {
+  @apply w-full bg-black text-white text-center
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */

@@ -141,14 +141,12 @@ const chart4 = {
 const Dashboard = () => {
   const [selected, setSelected] = useState('')
   return (
-    <Fragment>
       <div className="md:flex md:flex-wrap">
         <Table table={chart1} selected={selected} setSelected={setSelected}/>
         <Table table={chart2} selected={selected} setSelected={setSelected}/>
         <Table table={chart3} selected={selected} setSelected={setSelected}/>
         <Table table={chart4} selected={selected} setSelected={setSelected} />
       </div>
-    </Fragment>  
   )
 }
 
