@@ -12,20 +12,20 @@ module.exports = {
         480: '480px',
         350: '350px',
         370: '370px',
-        "1/2": '50%',
-        "3.5": '3.5rem',
+        '1/2': '50%',
+        3.5: '3.5rem',
       },
       maxHeight: {
         modal: 'calc(100vh - 4rem)',
       },
       padding: {
         300: '300px',
-        "3.5": '3.5rem',
-        "9": '9rem',
-        "16rem": '16rem',
+        3.5: '3.5rem',
+        9: '9rem',
+        '16rem': '16rem',
       },
-      margin:{
-        "9":'9rem'
+      margin: {
+        9: '9rem',
       },
       width: {
         300: '300px',
@@ -35,11 +35,11 @@ module.exports = {
         550: '550px',
         600: '600px',
         650: '650px',
-        "9rem": '9rem',
+        '9rem': '9rem',
       },
-      backgroundImage: theme => ({
-        'uniswap': "url('/uniswap.png')",
-       }),
+      backgroundImage: (theme) => ({
+        uniswap: "url('/uniswap.png')",
+      }),
       colors: {
         grayish: '#808080',
         yellowish: 'rgb(237, 214, 0)',
@@ -57,12 +57,15 @@ module.exports = {
         balNameCol: 'rgb(103, 169, 255)',
         balNameColBg: 'rgb(37, 44, 51)',
         grayish: '#808080',
-        "transparent-bg": "rgba(0,0,0,0.7)"
+        lightgray: '#3C3F43',
+        blackish: 'rgb(20, 22, 24)',
+        tealgreen: '#4CBFC0',
+        'transparent-bg': 'rgba(0,0,0,0.7)',
       },
       zIndex: {
         1: '1',
         2: '2',
-        "-1": '-1',
+        '-1': '-1',
       },
     },
   },
