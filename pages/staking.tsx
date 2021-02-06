@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import dynamic from 'next/dynamic'
 import { QuestionIcon } from '../components/svgIcons'
+import { Line } from "react-chartjs-2";
 const NewSelect = dynamic(() => import("../components/Select"), { ssr: false });
 
 
@@ -12,8 +13,8 @@ export default function Dash() {
                 <StakeHeader headerText="STAKING" />
                 <Deposit />
                 <div className="md:w-8/12 flex-center-content">
-                    <div className="w-full md:w-9/12 h-370 bg-red-300">
-                        CHART here
+                    <div className="w-full md:w-9/12 h-370 flex-center-content items-center relative">
+                        <Chart />
                     </div>
 
                     <div className="flex-center-content md:w-3/12 border  bg-brownBg w-full py-2 md:h-370">
@@ -158,3 +159,86 @@ function Deposit() {
         </div>
     )
 }
+
+const Chart = () => {
+    return (
+        <Line
+        // maintainAspectRatio={false}
+      data={{
+        datasets: chart1.data
+      }}
+      options= {{
+        scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                unit: 'month',
+                stepSize: 2
+              },
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+        },
+        tooltips: {
+          mode: 'nearest'
+        },
+        elements: {
+          line: {
+              tension: 0
+          }
+        },
+        legend: {
+          display: false
+        },
+      }
+    }
+    />
+    )
+}
+
+const chart1 = {
+    id: 1,
+    label: 'FRAX', 
+    header: [
+      {
+        text: 'PRICE',
+        value: '$1.000'
+      },
+      {
+        text: 'SUPPLY',
+        value: '123.66M'
+      },
+      {
+        text: 'MARKET CAP',
+        value: '123.66M'
+      }
+    ],
+    dropdown: [
+      {
+        id: 'frax-period'
+      },
+      {
+        id: 'frax-category'
+      }
+    ],
+    data: [
+      {
+        fill: false, borderColor: '#FFF',
+        data: [{
+          t: new Date('January 14 2020'),
+          y: 15
+          }, {
+              t: new Date('January 17, 2020'),
+              y: 12
+          },
+          {
+            t: new Date('January 27, 2020'),
+            y: 25
+        }]
+      }
+    ],
+    stepSize: 6
+  }

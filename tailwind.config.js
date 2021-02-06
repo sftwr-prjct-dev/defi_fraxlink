@@ -22,7 +22,7 @@ module.exports = {
         300: '300px',
         "3.5": '3.5rem',
         "9": '9rem',
-        "16": '16rem',
+        "16rem": '16rem',
       },
       margin:{
         "9":'9rem'
