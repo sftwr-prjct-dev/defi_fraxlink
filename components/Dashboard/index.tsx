@@ -1,155 +1,185 @@
-import { Fragment, useState } from 'react'
-import Table from './Table'
+import { Fragment, useState } from 'react';
+import Table from './Table';
 
 const chart1 = {
   id: 1,
-  label: 'FRAX', 
+  label: 'FRAX',
   header: [
     {
       text: 'PRICE',
-      value: '$1.000'
+      value: '$1.000',
     },
     {
       text: 'SUPPLY',
-      value: '123.66M'
+      value: '123.66M',
     },
     {
       text: 'MARKET CAP',
-      value: '123.66M'
-    }
+      value: '123.66M',
+    },
   ],
   dropdown: [
     {
-      id: 'frax-period'
+      id: 'frax-period',
     },
     {
-      id: 'frax-category'
-    }
+      id: 'frax-category',
+    },
   ],
   data: [
     {
-      fill: false, borderColor: '#FFF',
-      data: [{
-        t: new Date('January 14 2020'),
-        y: 15
-        }, {
-            t: new Date('January 17, 2020'),
-            y: 12
+      data: [
+        {
+          t: new Date('January 14 2020'),
+          y: 15,
+        },
+        {
+          t: new Date('January 17, 2020'),
+          y: 12,
+        },
+        {
+          t: new Date('January 18, 2020'),
+          y: 15,
         },
         {
           t: new Date('January 27, 2020'),
-          y: 25
-      }]
-    }
+          y: 20,
+        },
+        {
+          t: new Date('January 30, 2020'),
+          y: 25,
+        },
+      ],
+    },
   ],
-  stepSize: 6
-}
+  stepSize: 6,
+};
 
 const chart2 = {
   id: 2,
-  label: '', 
+  label: '',
   header: [
     {
       text: 'COLLATERAL RATIO',
-      value: '85.50%'
+      value: '85.50%',
     },
     {
       text: 'GROWTH RATIO',
-      value: '17.73%'
-    }
+      value: '17.73%',
+    },
   ],
   dropdown: [
     {
-      id: 'ratio-period'
+      id: 'ratio-period',
     },
     {
-      id: 'ratio-category'
-    }
+      id: 'ratio-category',
+    },
   ],
   data: [
     {
-      fill: false, borderColor: '#FFF',
-      data: [{
-        t: new Date('January 13 2020'),
-        y: 5
-    }, {
-        t: new Date('January 17, 2020'),
-        y: 10
-    }]
-    }
+      data: [
+        {
+          t: new Date('January 13 2020'),
+          y: 5,
+        },
+        {
+          t: new Date('January 17, 2020'),
+          y: 10,
+        },
+      ],
+    },
   ],
-  stepSize: 4
-}
+  stepSize: 4,
+};
 
 const chart3 = {
   id: 3,
-  label: 'FXS', 
+  label: 'FXS',
   header: [
     {
       text: 'ORACLE PRICE',
-      value: '$6.615'
+      value: '$6.615',
     },
     {
       text: 'CIRC. SUPPLY',
-      value: '2.398M'
+      value: '2.398M',
     },
     {
       text: 'CIRC. MARKET CAP',
-      value: '$16.396M'
-    }
+      value: '$16.396M',
+    },
   ],
   dropdown: [
     {
-      id: 'fxs-period'
+      id: 'fxs-period',
     },
     {
-      id: 'fxs-category'
-    }
+      id: 'fxs-category',
+    },
   ],
   data: [
     {
-      fill: false, borderColor: '#FFF',
-      data: [{
-        t: new Date('January 14 2020'),
-        y: 20
-    }, {
-        t: new Date('August 17, 2021'),
-        y: 49
-    }]
-    }
+      data: [
+        {
+          t: new Date('January 14 2020'),
+          y: 20,
+        },
+        {
+          t: new Date('August 17, 2020'),
+          y: 19,
+        },
+        {
+          t: new Date('January 10, 2021'),
+          y: 23,
+        },
+        {
+          t: new Date('February 17, 2021'),
+          y: 20,
+        },
+        {
+          t: new Date('March 1, 2021'),
+          y: 19,
+        },
+        {
+          t: new Date('August 17, 2021'),
+          y: 18,
+        },
+      ],
+    },
   ],
-  stepSize: 3
-}
+  stepSize: 3,
+};
 
 const chart4 = {
   id: 4,
-  label: '', 
+  label: '',
   header: [
     {
       text: 'TOTAL VALUE',
-      value: '$114M'
-    }
+      value: '$114M',
+    },
   ],
   dropdown: [
     {
-      id: 'total-value'
-    }
+      id: 'total-value',
+    },
   ],
-  data: [10,20]
-}
+  data: [10, 20],
+};
 
 const Dashboard = () => {
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState('');
   return (
     <Fragment>
-      <div className="md:flex md:flex-wrap">
-        <Table table={chart1} selected={selected} setSelected={setSelected}/>
-        <Table table={chart2} selected={selected} setSelected={setSelected}/>
-        <Table table={chart3} selected={selected} setSelected={setSelected}/>
+      <div className="md:flex md:flex-wrap h-full">
+        <Table table={chart1} selected={selected} setSelected={setSelected} />
+        <Table table={chart2} selected={selected} setSelected={setSelected} />
+        <Table table={chart3} selected={selected} setSelected={setSelected} />
         <Table table={chart4} selected={selected} setSelected={setSelected} />
       </div>
-    </Fragment>  
-  )
-}
+    </Fragment>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
